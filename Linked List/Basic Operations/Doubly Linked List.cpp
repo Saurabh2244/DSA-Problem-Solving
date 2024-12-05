@@ -17,9 +17,15 @@ class Node{
     
     // Destructor
     ~Node() {
-        // Deallocate memory for the next node
-        delete next;
+        if (next != NULL) {
+            delete next;  // Recursively delete the next nodes
+            next = NULL;  // Avoid dangling pointer
+        }
+        if (prev != NULL) {
+            prev = NULL;  // Break the backward link to avoid dangling pointers
+        }
     }
+
 };
 
 //insert at tail
